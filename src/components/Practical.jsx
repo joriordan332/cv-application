@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 function Practical() {
+
     const [company, setCompanyName] = useState('');
     const [position, setPosition] = useState('');
     const [responsibilities, setResponsibilities] = useState('');
-    const [dates, setDates] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
 
     function handleCompany(e) {
         setCompanyName(e.target.value);
@@ -18,77 +20,83 @@ function Practical() {
         setResponsibilities(e.target.value);
     }
 
-    function handleDates(e) {
-        setDates(e.target.value);
+    function handleStartDate(e) {
+        setStartDate(e.target.value);
     }
 
-    function editInput() {
-        setCompanyName('');
-        setPosition('');
-        setResponsibilities('');
-        setDates('');
+    function handleEndDate(e) {
+        setEndDate(e.target.value);
     }
+
 
     return (
-        <>
-        <h2>Practical Experience</h2>
         
-        <form onSubmit={e => e.preventDefault()}>
-        <ul>
-            <label htmlFor="company">Company Name</label>
-            <input 
-            type="text"
-            id="company"
-            placeholder="Santander"
-            value={company}
-            onChange={handleCompany}
+        <div className="practical">
+       
+        <h2>Practical Experience</h2>
+        <label>
+            Company Name:{''}
+            <input
+                placeholder="Santander"
+                value={company}
+                onChange={handleCompany}
             />
-        </ul>
-        <ul>
-        <label htmlFor="position">Position Title</label>
-            <input 
-            type="text"
-            id="position"
-            placeholder="Quality Checker"
-            value={position}
-            onChange={handlePosition}
+        </label>
+        <p className="companyMain">
+            {company}
+        </p>
+
+        <label>
+            Position:{''}
+            <input
+                placeholder="Quality Checker"
+                value={position}
+                onChange={handlePosition}
             />
-       </ul>
-       <ul>
-        <label htmlFor="responsibilities">Responsibilities</label>
-            <input 
-            type="text"
-            id="responsibilities"
-            placeholder="Quality checked departments work to make sure all the correct information was being send to the customer etc" 
-            value={responsibilities}
-            onChange={handleResponsibilities}
+        </label>
+        <p className="positionMain">
+            {position}
+        </p>
+
+        <label>
+            Responsibilities:{''}
+            <input
+                placeholder="Quality checking"
+                value={responsibilities}
+                onChange={handleResponsibilities}
             />
-        </ul>
-        <ul>
-        <label htmlFor="dates">Date from and until when you worked for that company</label>
-            <input 
-            type="text"
-            id="dates"
-            placeholder="2015-Present"
-            value={dates}
-            onChange={handleDates}
+        </label>
+        <p className="responsibilitiesMain">
+            {responsibilities}
+        </p>
+
+        <label>
+            Start Date:{''}
+            <input
+                placeholder="10/05/2024"
+                value={startDate}
+                onChange={handleStartDate}
             />
-        </ul>
-        </form>
-        <button onClick={editInput}>Edit</button>
-        <button onClick={renderPractical}>Submit</button>
-        </>
-    )
+        </label>
+        <p className="startDateMain">
+            {startDate}
+        </p>
+
+        <label>
+             End Date:{''}
+            <input
+                placeholder="Present"
+                value={endDate}
+                onChange={handleEndDate}
+            />
+        </label>
+        <p className="endDateMain">
+            {endDate}
+        </p>
+        
+        </div>
+    );
 }
 
-
-function renderPractical({title, companyName, positionTitle, responsibilities, dates}) {
-    return (
-        <section>
-            <h2>HI THERE</h2>
-
-        </section>
-    )
-}
 
 export default Practical

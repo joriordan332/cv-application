@@ -1,38 +1,67 @@
+import { useState } from "react";
+
 function Education() {
+
+    const [school, setSchool] = useState('');
+    const [email, setEmail] = useState('');
+    const [date, setDates] = useState('');
+
+    function handleSchool(e) {
+        setSchool(e.target.value);
+    }
+
+    function handleTitle(e) {
+        setEmail(e.target.value);
+    }
+
+    function handleDates(e) {
+        setDates(e.target.value);
+    }
 
 
     return (
-        <>
-        <h2>Educational Experience</h2>
         
-        <form onSubmit={e => e.preventDefault()}>
-        <ul>
-            <label htmlFor="school">School Name</label>
-            <input 
-            type="text"
-            id="school"
-            placeholder="St Patrick's" 
+        <div className="experience">
+       
+        <h2>Educational Experience</h2>
+        <label>
+            School Name:{''}
+            <input
+                placeholder="St Patrick's"
+                value={school}
+                onChange={handleSchool}
             />
-        </ul>
-        <ul>
-        <label htmlFor="study">Title of Study</label>
-            <input 
-            type="text"
-            id="study"
-            placeholder="Science" 
+        </label>
+        <p className="nameMain">
+            {school}
+        </p>
+
+        <label>
+            Title of Study:{''}
+            <input
+                placeholder="Science"
+                value={email}
+                onChange={handleTitle}
             />
-       </ul>
-       <ul>
-        <label htmlFor="date">Date of Study</label>
-            <input 
-            type="text"
-            id="date"
-            placeholder="2005-2009" 
+        </label>
+        <p className="emailMain">
+            {email}
+        </p>
+
+        <label>
+            Date of Study:{''}
+            <input
+                placeholder="2005-2009"
+                value={date}
+                onChange={handleDates}
             />
-        </ul>
-        </form>
-        </>
-    )
+        </label>
+        <p className="datesMain">
+            {date}
+        </p>
+
+        </div>
+    );
 }
 
 export default Education
