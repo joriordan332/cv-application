@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 function Practical() {
-
-    const [company, setCompanyName] = useState('');
-    const [position, setPosition] = useState('');
-    const [responsibilities, setResponsibilities] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const [company, setCompanyName] = useState('Santander');
+    const [position, setPosition] = useState('Quality Checker');
+    const [responsibilities, setResponsibilities] = useState('Quality checking');
+    const [startDate, setStartDate] = useState('10/05/2024');
+    const [endDate, setEndDate] = useState('Present');
 
     function handleCompany(e) {
         setCompanyName(e.target.value);
@@ -34,66 +34,86 @@ function Practical() {
         <div className="practical">
        
         <h2>Practical Experience</h2>
+        <form onSubmit={e => {
+            e.preventDefault();
+            setIsEditing(!isEditing);
+        }}>
         <label>
-            Company Name:{''}
+            Company Name:{' '}
+            {isEditing ? (
             <input
-                placeholder="Santander"
                 value={company}
                 onChange={handleCompany}
             />
+        ) : (
+            <b>{company}</b>
+        )}
         </label>
         <p className="companyMain">
             {company}
         </p>
 
         <label>
-            Position:{''}
+            Position:{' '}
+            {isEditing ? (
             <input
-                placeholder="Quality Checker"
                 value={position}
                 onChange={handlePosition}
             />
+        ) : (
+            <b>{position}</b>
+        )}
         </label>
         <p className="positionMain">
             {position}
         </p>
 
         <label>
-            Responsibilities:{''}
+            Responsibilities:{' '}
+            {isEditing ? (
             <input
-                placeholder="Quality checking"
                 value={responsibilities}
                 onChange={handleResponsibilities}
             />
+        ) : (
+            <b>{responsibilities}</b>
+        )}
         </label>
         <p className="responsibilitiesMain">
             {responsibilities}
         </p>
 
         <label>
-            Start Date:{''}
+            Start Date:{' '}
+            {isEditing ? (
             <input
-                placeholder="10/05/2024"
                 value={startDate}
                 onChange={handleStartDate}
             />
+        ) : (
+            <b>{startDate}</b>
+        )}
         </label>
         <p className="startDateMain">
             {startDate}
         </p>
 
         <label>
-             End Date:{''}
+             End Date:{' '}
+            {isEditing ? (
             <input
-                placeholder="Present"
                 value={endDate}
                 onChange={handleEndDate}
             />
+        ) : (
+            <b>{endDate}</b>
+        )}
         </label>
         <p className="endDateMain">
             {endDate}
         </p>
-        
+        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
+        </form>
         </div>
     );
 }

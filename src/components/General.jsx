@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 function General() {
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [number, setNumber] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const [name, setName] = useState('Jonathan ORiordan');
+    const [email, setEmail] = useState('jonathan.oriordan@outlook.com');
+    const [number, setNumber] = useState('07895485628');
 
     function handleName(e) {
         setName(e.target.value);
@@ -24,42 +24,56 @@ function General() {
         <div className="experience">
        
         <h2>General</h2>
+        <form onSubmit={e => {
+            e.preventDefault();
+            setIsEditing(!isEditing);
+        }}>
         <label>
-            Name:{''}
+            Name:{' '}
+            {isEditing ? (
             <input
-                placeholder="Jonathan O'Riordan"
                 value={name}
                 onChange={handleName}
             />
+        ) : (
+            <b>{name}</b>
+        )}
         </label>
         <p className="nameMain">
             {name}
         </p>
 
         <label>
-            Email:{''}
+            Email:{' '}
+            {isEditing ? (
             <input
-                placeholder="jonathan.o'riordan@outlook.com"
                 value={email}
                 onChange={handleEmail}
             />
+        ) : (
+            <b>{email}</b>
+        )}
         </label>
         <p className="emailMain">
             {email}
         </p>
 
         <label>
-            Phone number:{''}
+            Phone number:{' '}
+            {isEditing ? (
             <input
-                placeholder="07895485628"
                 value={number}
                 onChange={handleNumber}
             />
+        ) : (
+            <b>{number}</b>
+        )}
         </label>
         <p className="numberMain">
             {number}
         </p>
-
+        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
+        </form>
         </div>
     );
 }

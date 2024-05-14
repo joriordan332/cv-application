@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 function Education() {
-
-    const [school, setSchool] = useState('');
-    const [email, setEmail] = useState('');
-    const [date, setDates] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const [school, setSchool] = useState('St Patrick');
+    const [email, setEmail] = useState('Science');
+    const [date, setDates] = useState('2005-2009');
 
     function handleSchool(e) {
         setSchool(e.target.value);
@@ -24,42 +24,56 @@ function Education() {
         <div className="experience">
        
         <h2>Educational Experience</h2>
+        <form onSubmit={e => {
+            e.preventDefault();
+            setIsEditing(!isEditing);
+        }}>
         <label>
-            School Name:{''}
+            School Name:{' '}
+            {isEditing ? (
             <input
-                placeholder="St Patrick's"
                 value={school}
                 onChange={handleSchool}
             />
+        ) : (
+            <b>{school}</b>
+        )}
         </label>
         <p className="nameMain">
             {school}
         </p>
 
         <label>
-            Title of Study:{''}
+            Title of Study:{' '}
+            {isEditing ? (
             <input
-                placeholder="Science"
                 value={email}
                 onChange={handleTitle}
             />
+        ) : (
+            <b>{email}</b>
+        )}
         </label>
         <p className="emailMain">
             {email}
         </p>
 
         <label>
-            Date of Study:{''}
+            Date of Study:{' '}
+            {isEditing ? (
             <input
-                placeholder="2005-2009"
                 value={date}
                 onChange={handleDates}
             />
+        ) : (
+            <b>{date}</b>
+        )}
         </label>
         <p className="datesMain">
             {date}
         </p>
-
+        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
+        </form>
         </div>
     );
 }
