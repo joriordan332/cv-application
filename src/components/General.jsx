@@ -21,13 +21,15 @@ function General() {
 
     return (
         
-        <div className="experience">
+        <div className="general">
+            <div className="generalSideBar">
        
-        <h2>General</h2>
+        <h2 className="generalTitle">General</h2>
         <form onSubmit={e => {
             e.preventDefault();
             setIsEditing(!isEditing);
         }}>
+        <div className="name">
         <label>
             Name:{' '}
             {isEditing ? (
@@ -39,10 +41,9 @@ function General() {
             <b>{name}</b>
         )}
         </label>
-        <p className="nameMain">
-            {name}
-        </p>
+        </div>
 
+        <div className="email">
         <label>
             Email:{' '}
             {isEditing ? (
@@ -54,12 +55,11 @@ function General() {
             <b>{email}</b>
         )}
         </label>
-        <p className="emailMain">
-            {email}
-        </p>
+        </div>
 
+        <div className="phone">
         <label>
-            Phone number:{' '}
+            Phone:{' '}
             {isEditing ? (
             <input
                 value={number}
@@ -69,13 +69,31 @@ function General() {
             <b>{number}</b>
         )}
         </label>
+        </div>
+        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
+        </form>
+            </div>
+            <div className="generalMain">
+                <h1 className="nameMain">
+            {name}
+
+            </h1>
+            <div className="generalDetails">
+            
+            <p className="emailMain">
+            {email}
+        </p>
+
         <p className="numberMain">
             {number}
         </p>
-        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
-        </form>
+        
         </div>
+            </div>
+        </div>
+        
     );
+    
 }
 
 export default General

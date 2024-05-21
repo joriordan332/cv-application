@@ -3,15 +3,15 @@ import { useState } from "react";
 function Education() {
     const [isEditing, setIsEditing] = useState(false);
     const [school, setSchool] = useState('St Patrick');
-    const [email, setEmail] = useState('Science');
+    const [study, setStudy] = useState('Science');
     const [date, setDates] = useState('2005-2009');
 
     function handleSchool(e) {
         setSchool(e.target.value);
     }
 
-    function handleTitle(e) {
-        setEmail(e.target.value);
+    function handleStudy(e) {
+        setStudy(e.target.value);
     }
 
     function handleDates(e) {
@@ -21,13 +21,15 @@ function Education() {
 
     return (
         
-        <div className="experience">
-       
+        <div className="education">
+            <div className="educationSideBar">
         <h2>Educational Experience</h2>
         <form onSubmit={e => {
             e.preventDefault();
             setIsEditing(!isEditing);
         }}>
+        
+        <div className="school">
         <label>
             School Name:{' '}
             {isEditing ? (
@@ -39,25 +41,22 @@ function Education() {
             <b>{school}</b>
         )}
         </label>
-        <p className="nameMain">
-            {school}
-        </p>
+        </div>
 
+        <div className="study">
         <label>
             Title of Study:{' '}
             {isEditing ? (
             <input
-                value={email}
-                onChange={handleTitle}
+                value={study}
+                onChange={handleStudy}
             />
         ) : (
-            <b>{email}</b>
+            <b>{study}</b>
         )}
         </label>
-        <p className="emailMain">
-            {email}
-        </p>
-
+        </div>
+        <div className="date">
         <label>
             Date of Study:{' '}
             {isEditing ? (
@@ -69,12 +68,27 @@ function Education() {
             <b>{date}</b>
         )}
         </label>
-        <p className="datesMain">
-            {date}
-        </p>
+        </div>
         <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
         </form>
         </div>
+        <div className="educationMain">
+            <h2 className="educationHeading">Education</h2>
+            <div className="educationDetails">
+            <p className="schoolMain">
+            {school}
+        </p>
+        <p className="studyMain">
+            {study}
+        </p>
+        <p className="datesMain">
+            {date}
+        </p>
+        </div>
+        </div>
+        </div>
+        
+        
     );
 }
 

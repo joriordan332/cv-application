@@ -32,12 +32,13 @@ function Practical() {
     return (
         
         <div className="practical">
-       
+        <div className="practicalSideBar">
         <h2>Practical Experience</h2>
         <form onSubmit={e => {
             e.preventDefault();
             setIsEditing(!isEditing);
         }}>
+        <div className="company">
         <label>
             Company Name:{' '}
             {isEditing ? (
@@ -49,10 +50,9 @@ function Practical() {
             <b>{company}</b>
         )}
         </label>
-        <p className="companyMain">
-            {company}
-        </p>
+        </div>
 
+        <div className="position">
         <label>
             Position:{' '}
             {isEditing ? (
@@ -64,10 +64,9 @@ function Practical() {
             <b>{position}</b>
         )}
         </label>
-        <p className="positionMain">
-            {position}
-        </p>
+        </div>
 
+        <div className="responsibilities">
         <label>
             Responsibilities:{' '}
             {isEditing ? (
@@ -79,10 +78,9 @@ function Practical() {
             <b>{responsibilities}</b>
         )}
         </label>
-        <p className="responsibilitiesMain">
-            {responsibilities}
-        </p>
+        </div>
 
+        <div className="dates">
         <label>
             Start Date:{' '}
             {isEditing ? (
@@ -94,10 +92,9 @@ function Practical() {
             <b>{startDate}</b>
         )}
         </label>
-        <p className="startDateMain">
-            {startDate}
-        </p>
-
+        </div>
+        
+        <div className="endDates">
         <label>
              End Date:{' '}
             {isEditing ? (
@@ -109,11 +106,34 @@ function Practical() {
             <b>{endDate}</b>
         )}
         </label>
+        </div>
+        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
+        </form>
+        </div>
+        <div className="practicalMain">
+            <h2 className="practicalHeading">Practical Experience</h2>
+            <div className="practicalDetails">
+            <p className="companyMain">
+            {company}
+            </p>
+
+            <p className="positionMain">
+            {position}
+        </p>
+
+        <p className="responsibilitiesMain">
+            {responsibilities}
+        </p>
+
+        <p className="startDateMain">
+            {startDate}
+        </p>
+
         <p className="endDateMain">
             {endDate}
         </p>
-        <button type="submit">{isEditing ? 'Save' : 'Edit'}</button>
-        </form>
+        </div>
+        </div>
         </div>
     );
 }

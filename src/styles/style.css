@@ -1,0 +1,49 @@
+
+.education, .general, .practical {
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+}
+
+.educationSideBar, .school, .study, .date, .educationMain, .schoolMain, .studyMain, .datesMain, .generalSideBar, .name, .email, .phone, .nameMain, .emailMain, .numberMain, .practicalSideBar, .company, .position, .responsibilities, .dates, .endDates, .practicalMain, .companyMain, .positionMain, .responsibilitiesMain, .startDateMain, .endDateMain {
+    padding: 15px;
+}
+
+.educationSideBar, .generalSideBar, .practicalSideBar, h1, h2 {
+    text-align: center;
+
+}
+
+.generalDetails {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.emailMain {
+    grid-column: 1 / 2;
+    text-align: center;
+}
+
+.numberMain {
+    grid-column: 2 / 3;
+    text-align: center;
+}
+
+.practicalDetails, .educationDetails {
+    padding-left: 15px;
+}
+
+.generalSideBar, .educationSideBar, .practicalSideBar {
+    border-bottom: solid 1px rgb(255, 255, 255);
+    background-color: #002146;
+    color: aliceblue;
+}
+
+.nameMain, .practicalHeading, .educationHeading, .emailMain, .numberMain {
+    color: #174981;;
+}
+
+.generalDetails, .educationDetails, .practicalDetails {
+    font-weight: bold;
+    color: #404e5e;
+}
